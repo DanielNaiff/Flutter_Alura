@@ -3,8 +3,18 @@ void main(){
   Set<String> registrosVisitados = <String>{};
   registrosVisitados = registrarDestinos("São Paulo", registrosVisitados);
   print(registrosVisitados);
+  
+  Map<String, double> registrarPrecos = {};
+  
+  registrarPrecos["São Paulo"] = 1200;
+  registrarPrecos["Rio Janeiro"] = 1500;
+  
+  print(registrarPrecos);
+  
+  Viagem viagem = 
 }
 
+class Viagem ={}
 Set<String> registrarDestinos(String destinos, Set<String> banco){
   banco.add(destinos);
   return banco;
