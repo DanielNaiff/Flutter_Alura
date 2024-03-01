@@ -1,60 +1,39 @@
+import 'package:byte_bank/models/transferencia.dart';
+import 'package:byte_bank/screens/Transferencia/lista.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const BytebankApp());
 }
 
-class MyApp extends StatelessWidget {
+class BytebankApp extends StatelessWidget {
+  const BytebankApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Contador de Cliques',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(),
+          primaryColor: Colors.green[900],
+          buttonTheme: ButtonThemeData(
+              buttonColor: Colors.blueAccent[700],
+              textTheme: ButtonTextTheme.primary)),
+      home: ListaTransferencias(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+class ItemTransferencia extends StatelessWidget {
+  final Transferencia _transferencia;
+  // ignore: prefer_const_constructors_in_immutables
+  ItemTransferencia(this._transferencia, {super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Contador de Cliques'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'Número de cliques:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Incrementar',
-        child: Icon(Icons.add),
+    return Card(
+      child: ListTile(
+        leading: const Icon(Icons.monetization_on),
+        title: Text(_transferencia.valor.toString()),
+        subtitle: Text(_transferencia.numeroConta.toString()),
       ),
     );
   }
